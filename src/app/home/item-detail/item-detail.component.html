@@ -1,0 +1,78 @@
+<ActionBar>
+  <NavigationButton
+    (tap)="onBackTap()"
+    android.systemIcon="ic_menu_back"
+  ></NavigationButton>
+  <Label [text]="item.productName"></Label>
+</ActionBar>
+
+<StackLayout>
+  <Label
+    class="titleText"
+    [text]="item.category"
+    textAlignment="center"
+    textWrap="true"
+  ></Label>
+  <Image
+    src="~/images/{{ item.itemCode }}.jpg"
+    width="200"
+    stretch="aspectFit"
+  ></Image>
+  <Label
+    class="itemText"
+    [text]="item.title"
+    textAlignment="center"
+    textWrap="true"
+  ></Label>
+  <Label
+    class="itemText"
+    textAlignment="center"
+    text="IC: {{ item.itemCode }} - TC: {{ item.totalCode }}"
+    textWrap="true"
+  ></Label>
+  <Label
+    class="itemText"
+    verticalAlignment="top"
+    textWrap="true"
+    [text]="item.description"
+  ></Label>
+
+  <Label
+    class="itemText priceBadge"
+    text="To Be Sold At ₹ {{ item.priceRetail }} "
+    textWrap="true"
+  ></Label>
+  <GridLayout class="layoutSpace" rows="20,50" columns="150, *">
+    <Label
+      *ngIf="quantityInput.touched && !quantityInput.valid"
+      row="0"
+      colspan="2"
+      class="errorText"
+      text="Enter valid quantity"
+      textWrap="true"
+    ></Label>
+    <TextField
+      row="1"
+      col="0"
+      hint="Enter Quantity"
+      keyboardType="number"
+      maxLength="3"
+      backgroundColor="#f0f0f0"
+      required
+      ngModel
+      #quantityInput="ngModel"
+    ></TextField>
+
+    <Button
+      class="-primary"
+      row="1"
+      col="1"
+      (tap)="onSubmitTap(quantityInput.value)"
+    >
+      <FormattedString>
+        <Span text="{{ buttonTitle | uppercase }}" class="buttonText"></Span>
+        <Span text="&nbsp;&#xf35a;" class="far buttonText"></Span>
+      </FormattedString>
+    </Button>
+  </GridLayout>
+</StackLayout>

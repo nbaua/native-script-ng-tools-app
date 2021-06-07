@@ -1,0 +1,35 @@
+<ActionBar>
+  <Label text="Browse Products"></Label>
+</ActionBar>
+
+<StackLayout>
+  <SearchBar
+    hint="Search Products..."
+    style="background-color: #f1f1f1; opacity: 1"
+    width="90%"
+    class="text-center m-y-5"
+    [text]="searchPhrase"
+    (textChange)="onTextChanged($event)"
+    (clear)="onSearchClear($event)"
+    (submit)="onSearchSubmit($event)"
+    color="teal"
+    (loaded)="searchBarLoaded($event)"
+  >
+  </SearchBar>
+  <Label
+    [text]="matchedResult"
+    textAlignment="center"
+    textWrap="true"
+    class="text-primary"
+  ></Label>
+  <ListView
+    [items]="items"
+    style="height: 100%"
+    separatorColor="teal"
+    onfocus="onSearchSubmit"
+  >
+    <ng-template let-item="item" let-i="index">
+      <product-item [item]="item" [index]="i"></product-item>
+    </ng-template>
+  </ListView>
+</StackLayout>

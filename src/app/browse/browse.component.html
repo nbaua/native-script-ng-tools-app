@@ -1,0 +1,57 @@
+<ActionBar>
+  <Label text="Booked Orders"></Label>
+</ActionBar>
+
+<StackLayout style="height: 100%">
+  <Button class="-primary" row="1" col="1" (tap)="onSubmitTap()">
+    <FormattedString>
+      <Span text="{{ buttonTitle | uppercase }}" class="buttonText"></Span>
+      <Span text="&nbsp;&#xf35a;" class="far buttonText"></Span>
+    </FormattedString>
+  </Button>
+  <ListView [items]="bookedOrders" style="height: 100%" separatorColor="teal">
+    <ng-template let-item="item" let-i="index">
+      <DockLayout
+        [nsRouterLink]="['../item', item.item.itemCode]"
+        width="100%"
+        [backgroundColor]="itemBackgroundColor"
+        stretchLastChild="true"
+      >
+        <StackLayout dock="right">
+          <Label
+            class="categoryBadge"
+            [text]="item.item.category"
+            textWrap="true"
+          ></Label>
+          <Image
+            src="~/images/{{ item.item.itemCode }}.jpg"
+            width="100"
+            stretch="aspectFit"
+          ></Image>
+          <Label
+            class="priceBadge"
+            text="₹ {{ item.item.priceRetail }}"
+            textWrap="true"
+          ></Label>
+        </StackLayout>
+        <StackLayout dock="left">
+          <Label
+            class="titleText"
+            [text]="item.item.productName"
+            textWrap="true"
+          ></Label>
+          <Label
+            class="itemText"
+            text="IC: {{ item.item.itemCode }} - TC: {{ item.item.totalCode }}"
+            textWrap="true"
+          ></Label>
+          <Label
+            class="itemText"
+            text="{{ item.item.description | slice: 0:120 }}"
+            textWrap="true"
+          ></Label>
+        </StackLayout>
+      </DockLayout>
+    </ng-template>
+  </ListView>
+</StackLayout>

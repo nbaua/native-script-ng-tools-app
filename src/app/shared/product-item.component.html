@@ -1,0 +1,33 @@
+<DockLayout
+  [nsRouterLink]="['../item', item.itemCode]"
+  width="100%"
+  [backgroundColor]="itemBackgroundColor"
+  stretchLastChild="true"
+>
+  <StackLayout dock="right">
+    <Label class="categoryBadge" [text]="item.category" textWrap="true"></Label>
+    <Image
+      src="~/images/{{ item.itemCode }}.jpg"
+      width="100"
+      stretch="aspectFit"
+    ></Image>
+    <Label
+      class="priceBadge"
+      text="₹ {{ item.priceRetail }}"
+      textWrap="true"
+    ></Label>
+  </StackLayout>
+  <StackLayout dock="left">
+    <Label class="titleText" [text]="item.productName" textWrap="true"></Label>
+    <Label
+      class="itemText"
+      text="IC: {{ item.itemCode }} - TC: {{ item.totalCode }}"
+      textWrap="true"
+    ></Label>
+    <Label
+      class="itemText"
+      text="{{ item.description | slice: 0:120 }}"
+      textWrap="true"
+    ></Label>
+  </StackLayout>
+</DockLayout>

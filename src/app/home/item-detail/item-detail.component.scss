@@ -1,0 +1,43 @@
+.titleText {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  padding: 0%;
+  margin: 5px;
+  background-color: tomato;
+  margin: 3%;
+  padding: 3%;
+  border-radius: 5;
+}
+.itemText {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0%;
+  margin-top: 10;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.errorText {
+  color: red;
+  font-size: 14;
+  text-align: center;
+  font-weight: bold;
+}
+.buttonText {
+  color: #233;
+  font-size: 21;
+  font-weight: bold;
+}
+.priceBadge {
+  font-size: 14px;
+  background-color: #f0f0f0;
+  border-radius: 5;
+  width: "fit-content";
+  font-weight: bold;
+  padding: 3%;
+  color: orangered;
+  text-align: center;
+}
+.layoutSpace {
+  margin: 10;
+}
